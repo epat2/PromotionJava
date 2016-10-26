@@ -9,11 +9,11 @@ public class Products {
 
     static 
     {
-        products.put("redDress",    new Product("1001.1", "Red Dress",   100.0));
-        products.put("greenDress",  new Product("1001.2", "Green Dress", 100.0));
-        products.put("blueDress",   new Product("1001.3", "Blue Dress",  100.0));
-        products.put("whiteSocks",  new Product("2001.1", "White Socks", 10.0));
-        products.put("redSocks",    new Product("2001.2", "Red Socks",   10.0));
+        products.put("A",    new Product("A", "Red Dress",   100.0));
+        products.put("B",  new Product("B", "Green Dress", 100.0));
+        products.put("C",   new Product("C", "Blue Dress",  100.0));
+        products.put("D",  new Product("D", "White Socks", 10.0));
+        products.put("E",    new Product("E", "Red Socks",   10.0));
     }
 
     public static Product GetProduct(String name)

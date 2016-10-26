@@ -31,10 +31,9 @@ public class Main {
 	
 	        System.out.println("Input Quantity: ");       
 	        String quantity = main.readInput(reader);
-
+	        
 	        o.add(products.get(sku), Integer.valueOf(quantity));	  
 	        
-	        //totalPrice = 
 	        System.out.println("Continue with more items(y/n) ? ");
 	        String continueyesno = main.readInput(reader);
 
@@ -44,7 +43,6 @@ public class Main {
         }
         System.out.println("Order submitted is:");
         System.out.println(o.toString());
-        //System.out.println("Order submitted is: "+sku+" Quantity: "+quantity);       
         System.out.println("Ended");       
         
 	}
@@ -52,6 +50,13 @@ public class Main {
     public String readInput(BufferedReader reader) throws IOException{
         return reader.readLine();
     }
+    
+    public String readInput(Reader  reader) throws IOException{
+    	String inputstr = "";
+        char input = (char) reader.read();
+        inputstr+=input;
+        return inputstr;
+    }    
 
     public boolean quit(){
         return quit;

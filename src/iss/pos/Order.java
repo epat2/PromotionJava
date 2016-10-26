@@ -69,14 +69,27 @@ public class Order {
 		return total;
 	}
 
+	public double getFinalPurchaseValue(){
+		List<OrderItem> allitems = getItems();
+		double finalSum = 0;
+		for(OrderItem oitem : allitems ){
+			Product prod = oitem.getProduct();
+			double totalPrice = prod.getPrice() * oitem.getQuantity();
+			finalSum += totalPrice;
+		}
+		return finalSum;		
+	}
+	
 	@Override
 	public String toString() {
 		List<OrderItem> allitems = getItems();
 		String output="";
 		for(OrderItem oitem : allitems ){
 			Product prod = oitem.getProduct();
-			output = output.concat(prod.getName()+" "+prod.getSku()+" "+prod.getPrice()+" Quantity: "+oitem.getQuantity()+"\r\n");
+			double totalPrice = prod.getPrice() * oitem.getQuantity();
+			output = output.concat(prod.getName()+"SKU: "+prod.getSku()+"Price: "+prod.getPrice()+" Quantity: "+oitem.getQuantity()+" Total Price: "+totalPrice+"\r\n");
 		}
+		output = output.concat("Final Purchase Value:"+ getFinalPurchaseValue());
 		return output;
 	}
 	

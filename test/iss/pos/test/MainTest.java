@@ -3,30 +3,39 @@ package iss.pos.test;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.io.StringReader;
-
-import org.junit.Before;
 import org.junit.Test;
 
 import iss.pos.Main;
+import iss.pos.Order;
 
 public class MainTest {
 	private Main main;
 
-	@Before
-	public void setup() {
-		main = new Main();
+	public Order getOrder1(){
+		Order o = new Order();		
+        o.add(Products.GetProduct("A"), 2);
+        return o;
 	}
 
 	@Test
-	public void testCaseOne() throws IOException {
+	public void testFinalPurchaseValue1() throws IOException {
 
-//		char result1 = main.readInput(new StringReader("1"));
-//		assertEquals(result1, '1');
-//		assertFalse(main.quit());
-//
-//		char result2 = main.readInput(new StringReader("x"));
-//		assertEquals(result2, '\0');
-//		assertTrue(main.quit());
+		Order fullorder = getOrder1();
+		assertEquals(200.0, fullorder.getFinalPurchaseValue(), 0.001);
+	}
+	
+	public Order getOrder2(){
+		Order o = new Order();		
+        o.add(Products.GetProduct("A"), 2);
+        o.add(Products.GetProduct("B"), 3);
+        o.add(Products.GetProduct("C"), 1);
+        return o;
+	}
+
+	@Test
+	public void testFinalPurchaseValue2() throws IOException {
+
+		Order fullorder = getOrder2();
+		assertEquals(600.0, fullorder.getFinalPurchaseValue(), 0.001);
 	}
 }
