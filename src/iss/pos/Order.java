@@ -68,4 +68,17 @@ public class Order {
 		
 		return total;
 	}
+
+	@Override
+	public String toString() {
+		List<OrderItem> allitems = getItems();
+		String output="";
+		for(OrderItem oitem : allitems ){
+			Product prod = oitem.getProduct();
+			output = output.concat(prod.getName()+" "+prod.getSku()+" "+prod.getPrice()+" Quantity: "+oitem.getQuantity()+"\r\n");
+		}
+		return output;
+	}
+	
+	
 }
